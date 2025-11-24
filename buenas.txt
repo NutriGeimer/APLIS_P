@@ -1,0 +1,27 @@
+OLA GUICHO
+
+Aqui estara todo lo que cada quien vaya haciendo, y lo que le toca hacer al otro.
+
+Por ahora deje los html creado de lo que segun yo seria todo lo que vamos a usar.
+
+La pagina empieza en login
+La idea es hacer que un usuario tenga el rol de admin, y que solo ese correo sea capaz de entrar ahi
+el admin va a tener acceso a: admin.html, stock.html, ventas.html, y newad.html
+
+Y el cliente solo va a ver el login, resgister, productos, carrito y ya.
+
+por ahora no hay logica, pero se supone que ya puedes ir navegando entre paginas.
+
+te tocaria ver como hacer los php para lo que se va a ocupar, y hacer en el phpmyadmin las bases de datos
+
+para todo user se supone solo ocupa, Nombre, email, contraseña y rol (para todos los que se registran por si solos son clientes, 
+solo el admin puede agregar a otro admin)
+segun yo tambien vamos a ocupar la db de sesiones, asi como lo hicimos en clase
+y la de productos, que solo tenga nombre, precio, descripcion, stock e imagen
+tambien ocupariamos una base para los carritos, y otra para las ventas, que ahi pues tendrian ingresos etc
+
+porque el admin, a partir de los ingresos que tenga va a poder hacer restocks
+
+no se que mas podria haber, pero creo q seria todo
+
+tqm <3
