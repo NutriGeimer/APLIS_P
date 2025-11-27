@@ -1,38 +1,19 @@
-OLA GUICHO
+Hola guichooooo
 
-Aqui estara todo lo que cada quien vaya haciendo, y lo que le toca hacer al otro.
+pues bien, hice algunos cambios en los archivos, ademas de añádir los php de login, register, logout y el de me
 
-Por ahora deje los html creado de lo que segun yo seria todo lo que vamos a usar.
+tambien cambie el nombre de headers a _headers
+si te soy honesto, no se pq, pero sin el guion bajo no jalaba xd
 
-La pagina empieza en login
-La idea es hacer que un usuario tenga el rol de admin, y que solo ese correo sea capaz de entrar ahi
-el admin va a tener acceso a: admin.html, stock.html, ventas.html, y newad.html
+tambien para que funcione, me di cuenta que el sql tenia un detalle, y es que el que me pasaste usaba password nadamas, pero para que pueda hacerse el hash
+ocuapaba tener el nombre password_hash.
 
-Y el cliente solo va a ver el login, resgister, productos, carrito y ya.
+entonces, ocupas borrar la base de datos que tenias, y crear una nueva con el sql nuevo que deje (solo es el cambio en el password, lo demas se quedo igual)
 
-por ahora no hay logica, pero se supone que ya puedes ir navegando entre paginas.
+por ahora ya funciona el register y login perfectamente
 
-te tocaria ver como hacer los php para lo que se va a ocupar, y hacer en el phpmyadmin las bases de datos
-
-para todo user se supone solo ocupa, Nombre, email, contraseña y rol (para todos los que se registran por si solos son clientes, 
-solo el admin puede agregar a otro admin)
-segun yo tambien vamos a ocupar la db de sesiones, asi como lo hicimos en clase
-y la de productos, que solo tenga nombre, precio, descripcion, stock e imagen
-tambien ocupariamos una base para los carritos, y otra para las ventas, que ahi pues tendrian ingresos etc
-
-porque el admin, a partir de los ingresos que tenga va a poder hacer restocks
-
-no se que mas podria haber, pero creo q seria todo
+voy a ver si al rato meto lo de que si se logea un correo en especifico te deje entrar como admin, y te mande a la pagina de admin directamente, por ahora es todo
 
 tqm <3
 
 ==================================================================================================================================
-
-Hola nutri, pues reutilice código de lo que hicimos en las clases porque unos códigos como headers, config, db, son 
-genericos y reutilizables, so, supongo que esta bien.
-
-Por cierto puse el script sql de la base de datos dentro de la carpeta para que tu lo copies y 
-lo pegues en el phpMyAdmin, crea las tablas de sessions, users y products.
-
-Tambien ya esta el auth.php que utiliza los valores de la base de datos para la autenticación, y ya, solo crea tu .env tus variables
-para poner ahie el nombre de la base de datos 

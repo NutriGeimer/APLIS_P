@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/db.php';  
-require __DIR__ . '/headers.php';
+require __DIR__ . '/_headers.php';
 
 function current_user_or_401() {
     $token = $_COOKIE['token'] ?? null;
