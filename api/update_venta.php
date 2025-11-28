@@ -1,4 +1,5 @@
 <?php
+//Editar una venta ya registrada, con ajuste de stock
 require_once "headers.php";
 require_once "db.php";
 require_once "auth.php";

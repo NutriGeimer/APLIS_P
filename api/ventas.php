@@ -1,4 +1,5 @@
 <?php
+//Enlista las ventas 
 require_once "headers.php";
 require_once "db.php";
 require_once "auth.php";

@@ -1,23 +1,10 @@
-Hola guichooooo
+que rollo nutri
 
-pues bien, hice algunos cambios en los archivos, ademas de añádir los php de login, register, logout y el de me
+Cree los cruds de los productos y de las ventas, espero que esten bien hechos jaja
 
-tambien cambie el nombre de headers a _headers
-si te soy honesto, no se pq, pero sin el guion bajo no jalaba xd
+Vi que en los htmls, por ejemplo en el admin.html puedes visualizar las ventas, el stock, y de momento no se ve que se pueda
+hacer algo mas con los productos o las ventas, digo si crees que alguna funcion como update o delete o cualquiera de los crud esta demas 
+y creas que sea mucha talacha con los .js y html podemos modificarlo
 
-tambien para que funcione, me di cuenta que el sql tenia un detalle, y es que el que me pasaste usaba password nadamas, pero para que pueda hacerse el hash
-ocuapaba tener el nombre password_hash.
-
-entonces, ocupas borrar la base de datos que tenias, y crear una nueva con el sql nuevo que deje (solo es el cambio en el password, lo demas se quedo igual)
-
-por ahora ya funciona el register y login perfectamente
-
-voy a ver si al rato meto lo de que si se logea un correo en especifico te deje entrar como admin, y te mande a la pagina de admin directamente, por ahora es todo
-
-tqm <3
-
-==================================================================================================================================
-
-Hola, buenas nuevas, ya tambien se puede crear el admin que tendra acceso a la pagina de admin solo sigue las intrucciones del archivo: create_admin
-
-Ya esta la logica, si el user tiene rol de admin lo redirige a admin.html, si tiene rol cliente se redirige a productos.html
+Pero bueno si no es asi, y si todos los códigos de php estan correctos pues faltaría hacer los js, también en el archivo .sql agregue el script
+para crear la tabla de ventas, se va a ocupar jiji 
