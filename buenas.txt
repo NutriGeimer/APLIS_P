@@ -1,10 +1,13 @@
-que rollo nutri
+Hola guicho, me falto decirte que rollo
 
-Cree los cruds de los productos y de las ventas, espero que esten bien hechos jaja
+si puedes, borra la db q tenias y crea otra ya con el sql nuevo jaja, porque si se cambiaron algunas cosas y el carrito me costo un huebo
 
-Vi que en los htmls, por ejemplo en el admin.html puedes visualizar las ventas, el stock, y de momento no se ve que se pueda
-hacer algo mas con los productos o las ventas, digo si crees que alguna funcion como update o delete o cualquiera de los crud esta demas 
-y creas que sea mucha talacha con los .js y html podemos modificarlo
+ya quedo la pagina del carrito, todo su crud vaya.
 
-Pero bueno si no es asi, y si todos los códigos de php estan correctos pues faltaría hacer los js, también en el archivo .sql agregue el script
-para crear la tabla de ventas, se va a ocupar jiji 
+te toca hacer la parte de las ventas, revisar que se baje el stock de los productos si se vende, y poder ver el hisroial de las compras por usuario
+
+y los admin desde ventas.html todas las ventas hechas
+
+revisa entonces nadamas q la bd que esta ahorita si te deje hacer bien todo eso.
+
+<3
