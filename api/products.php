@@ -1,21 +1,33 @@
 <?php
-//Este archivo enlista los productos 
-require_once "headers.php";
-require_once "db.php";
-require_once "auth.php";
+require __DIR__ . '/auth.php';
+require __DIR__ . '/_headers.php';
 
+$user = current_user_or_401(); // cliente o admin
 
-$db = getDB();
+// Validación del método
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    http_response_code(405);
+    echo json_encode(['ok' => false, 'message' => 'Método no permitido']);
+    exit;
+}
 
 try {
-    $stmt = $db->prepare("SELECT * FROM products ORDER BY id DESC");
-    $stmt->execute();
-    $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    global $pdo;
 
-    echo json_encode($productos);
+    $stmt = $pdo->prepare("SELECT * FROM products ORDER BY id DESC");
+    $stmt->execute();
+    $productos = $stmt->fetchAll();
+
+    echo json_encode([
+        'ok' => true,
+        'productos' => $productos
+    ]);
 
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(["error" => "Error al obtener productos"]);
+    echo json_encode([
+        'ok' => false,
+        'message' => 'Error al obtener productos',
+        'error' => $e->getMessage()
+    ]);
 }
-
