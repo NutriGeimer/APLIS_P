@@ -17,3 +17,7 @@ voy a ver si al rato meto lo de que si se logea un correo en especifico te deje 
 tqm <3
 
 ==================================================================================================================================
+
+Hola, buenas nuevas, ya tambien se puede crear el admin que tendra acceso a la pagina de admin solo sigue las intrucciones del archivo: create_admin
+
+Ya esta la logica, si el user tiene rol de admin lo redirige a admin.html, si tiene rol cliente se redirige a productos.html
