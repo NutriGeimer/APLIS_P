@@ -38,3 +38,15 @@ CREATE TABLE sessions (
       ON DELETE CASCADE
 );
 
+-- TABLA: ventas
+CREATE TABLE ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
