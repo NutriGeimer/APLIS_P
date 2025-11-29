@@ -86,6 +86,26 @@ async function deleteItem(id) {
     updateCartCount();
 }
 
+function showAlert(message, type = "success") {
+    const container = document.getElementById("alert-container");
+
+    const alert = document.createElement("div");
+    alert.className = `alert alert-${type} alert-dismissible fade show`;
+    alert.role = "alert";
+    alert.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+    container.appendChild(alert);
+
+    setTimeout(() => {
+        alert.classList.remove("show");
+        alert.classList.add("hide");
+        setTimeout(() => alert.remove(), 500);
+    }, 4000);
+}
+
 document.getElementById("pay-btn").onclick = async () => {
     const res = await fetch(API + "/crear_venta.php", {
         method: "POST"
@@ -94,11 +114,11 @@ document.getElementById("pay-btn").onclick = async () => {
     const data = await res.json();
 
     if (!data.ok) {
-        alert(data.message);
+        showAlert(data.message, "danger");
         return;
     }
 
-    alert("Compra realizada con éxito 🛒💚");
+    showAlert("Compra realizada con éxito 🛒", "success");
     loadCart();
 };
 

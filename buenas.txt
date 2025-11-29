@@ -1,13 +1,1 @@
-Hola guicho, me falto decirte que rollo
-
-si puedes, borra la db q tenias y crea otra ya con el sql nuevo jaja, porque si se cambiaron algunas cosas y el carrito me costo un huebo
-
-ya quedo la pagina del carrito, todo su crud vaya.
-
-te toca hacer la parte de las ventas, revisar que se baje el stock de los productos si se vende, y poder ver el hisroial de las compras por usuario
-
-y los admin desde ventas.html todas las ventas hechas
-
-revisa entonces nadamas q la bd que esta ahorita si te deje hacer bien todo eso.
-
-<3
+Arregle errores c:

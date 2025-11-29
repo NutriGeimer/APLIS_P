@@ -1,6 +1,6 @@
 <?php
-require _DIR_ . '/auth.php';
-require _DIR_ . '/_headers.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/_headers.php';
 
 $user = current_user_or_401();
 $uid = $user['id'];

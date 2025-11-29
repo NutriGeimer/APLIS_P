@@ -36,7 +36,7 @@ async function cargarRestocks() {
 
 cargarRestocks();
 
-document.getElementById("logout").onclick = () => {
-    localStorage.removeItem("token");
-    location.href = "index.html";
+document.getElementById("logout").onclick = async () => {
+    await fetch(API + "/logout.php", { method: "POST", credentials: "include" });
+    window.location.href = "login.html";
 };

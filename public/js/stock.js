@@ -12,7 +12,7 @@ document.getElementById("logout").onclick = async () => {
 document.getElementById("product-form").onsubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target); // AHORA se envían archivos reales
+    const formData = new FormData(e.target);
 
     const res = await fetch(API + "/add_product.php", {
         method: "POST",
@@ -26,7 +26,7 @@ document.getElementById("product-form").onsubmit = async (e) => {
 
     if (!j.ok) return mostrarAlerta(j.message, "danger");
 
-    mostrarAlerta("Producto agregado correctamente ✔", "success");
+    mostrarAlerta("Producto agregado correctamente", "success");
 
     e.target.reset();
     cargarProductos();
@@ -113,7 +113,7 @@ async function eliminarProducto(id) {
     const j = await res.json();
 
     if (j.ok) {
-        mostrarAlerta("Producto eliminado ✔", "warning");
+        mostrarAlerta("Producto eliminado", "warning");
         cargarProductos();
     } else {
         mostrarAlerta(j.message || "Error al eliminar producto", "danger");
@@ -133,12 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
 });
 
-function mostrarEditarProducto(id, nombre, precio, descripcion, stock, imagen) {
+function mostrarEditarProducto(id, nombre, precio, descripcion, imagen) {
     document.getElementById("edit-id").value = id;
     document.getElementById("edit-nombre").value = nombre;
     document.getElementById("edit-precio").value = precio;
     document.getElementById("edit-desc").value = descripcion;
-    document.getElementById("edit-stock").value = stock;
 
     modalEditar.show();
 }
@@ -149,7 +148,6 @@ async function guardarEdicion() {
     form.append("nombre", document.getElementById("edit-nombre").value);
     form.append("precio", document.getElementById("edit-precio").value);
     form.append("descripcion", document.getElementById("edit-desc").value);
-    form.append("stock", document.getElementById("edit-stock").value);
 
     const imagen = document.getElementById("edit-imagen").files[0];
     if (imagen) {
@@ -169,7 +167,7 @@ async function guardarEdicion() {
         return;
     }
 
-    mostrarAlerta("Producto actualizado ✔", "success");
+    mostrarAlerta("Producto actualizado", "success");
     modalEditar.hide();
     cargarProductos();
 }
@@ -206,7 +204,7 @@ async function hacerRestock() {
 
     if (!j.ok) return mostrarAlerta(j.message, "danger");
 
-    mostrarAlerta("Restock aplicado ✔", "success");
+    mostrarAlerta("Restock aplicado", "success");
 
     modalRestock.hide();
     cargarProductos();

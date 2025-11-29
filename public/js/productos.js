@@ -79,7 +79,7 @@ function activarBotonesCarrito() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ product_id: id })   // ← CORREGIDO
+                body: JSON.stringify({ product_id: id })
             });
 
             const j = await res.json();

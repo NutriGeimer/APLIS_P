@@ -4,21 +4,18 @@ require __DIR__ . '/_headers.php';
 
 $user = current_user_or_401();
 
-// Validar admin
 if (($user['rol'] ?? null) !== 'admin') {
     http_response_code(403);
     echo json_encode(['ok' => false, 'message' => 'Acceso denegado']);
     exit;
 }
 
-// Validar método
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['ok' => false, 'message' => 'Método no permitido']);
     exit;
 }
 
-// Validar ID
 $id = $_POST['id'] ?? null;
 if (!$id) {
     http_response_code(400);
@@ -26,11 +23,9 @@ if (!$id) {
     exit;
 }
 
-// Obtener campos
 $nombre = $_POST['nombre'] ?? null;
 $precio = $_POST['precio'] ?? null;
 $descripcion = $_POST['descripcion'] ?? '';
-$stock = $_POST['stock'] ?? 0;
 
 if (!$nombre || !$precio) {
     http_response_code(400);
@@ -38,7 +33,12 @@ if (!$nombre || !$precio) {
     exit;
 }
 
-// 🔹 Manejo de imagen
+global $pdo;
+
+$stmtOldStock = $pdo->prepare("SELECT stock FROM products WHERE id = ?");
+$stmtOldStock->execute([$id]);
+$stockActual = $stmtOldStock->fetchColumn();
+
 $imagenNombre = null;
 
 if (!empty($_FILES['imagen']['name'])) {
@@ -60,22 +60,19 @@ if (!empty($_FILES['imagen']['name'])) {
     }
 }
 
+if (!$imagenNombre) {
+    $stmtOldImg = $pdo->prepare("SELECT imagen FROM products WHERE id = ?");
+    $stmtOldImg->execute([$id]);
+    $imagenNombre = $stmtOldImg->fetchColumn();
+}
+
 try {
-    global $pdo;
-
-    // Si no envían imagen nueva → mantener la actual
-    if (!$imagenNombre) {
-        $stmtOld = $pdo->prepare("SELECT imagen FROM products WHERE id = ?");
-        $stmtOld->execute([$id]);
-        $imagenNombre = $stmtOld->fetchColumn();
-    }
-
     $stmt = $pdo->prepare("
         UPDATE products SET 
             nombre = ?, 
             precio = ?, 
             descripcion = ?, 
-            stock = ?, 
+            stock = ?,
             imagen = ?
         WHERE id = ?
     ");
@@ -84,7 +81,7 @@ try {
         $nombre,
         $precio,
         $descripcion,
-        $stock,
+        $stockActual,   
         $imagenNombre,
         $id
     ]);
