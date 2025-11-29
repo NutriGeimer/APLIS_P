@@ -2,5 +2,5 @@
     require __DIR__ . '/_headers.php';
     require __DIR__ . '/auth.php';
 
-    $user = currrent_user_or_401();
+    $user = current_user_or_401();
     echo json_encode(['ok' => true, 'user' => $user]);
