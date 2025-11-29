@@ -77,8 +77,13 @@ async function cargarProductos() {
 
                         <div class="d-flex gap-2 mt-3">
                             <button class="btn btn-primary flex-fill"
-                                onclick="mostrarEditarProducto(${p.id}, '${p.nombre}', ${p.precio}, '${p.descripcion}', ${p.stock}, '${p.imagen}')">
+                                onclick="mostrarEditarProducto(${p.id}, '${p.nombre}', ${p.precio}, '${p.descripcion}', '${p.imagen}')">
                                 Editar
+                            </button>
+
+                            <button class="btn btn-warning flex-fill"
+                                onclick="mostrarRestock(${p.id})">
+                                Restock
                             </button>
 
                             <button class="btn btn-danger flex-fill"
@@ -166,5 +171,43 @@ async function guardarEdicion() {
 
     mostrarAlerta("Producto actualizado ✔", "success");
     modalEditar.hide();
+    cargarProductos();
+}
+
+let modalRestock = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+    modalRestock = new bootstrap.Modal(document.getElementById("modalRestock"));
+});
+
+function mostrarRestock(id) {
+    document.getElementById("restock-id").value = id;
+    document.getElementById("restock-cantidad").value = "";
+    document.getElementById("restock-costo").value = "";
+    modalRestock.show();
+}
+
+async function hacerRestock() {
+    const id = document.getElementById("restock-id").value;
+    const cantidad = Number(document.getElementById("restock-cantidad").value);
+    const costo = Number(document.getElementById("restock-costo").value);
+
+    if (cantidad <= 0 || costo <= 0)
+        return mostrarAlerta("Datos inválidos", "danger");
+
+    const res = await fetch(API + "/restock.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ product_id: id, cantidad, costo })
+    });
+
+    const j = await res.json();
+
+    if (!j.ok) return mostrarAlerta(j.message, "danger");
+
+    mostrarAlerta("Restock aplicado ✔", "success");
+
+    modalRestock.hide();
     cargarProductos();
 }

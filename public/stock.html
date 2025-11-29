@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="container d-flex">
-            <a class="navbar-brand"><b>Admin Stock |</b> Nutricho Company 🧑‍💻</a>
+            <a class="navbar-brand" href="admin.html"><b>Admin Stock |</b> Nutricho Company 🧑‍💻</a>
             <button id="logout" class="btn btn-danger btn-sm">Cerrar sesión</button>
         </div>
     </nav>
@@ -62,9 +62,6 @@
                 <label>Descripción</label>
                 <textarea id="edit-desc" class="form-control mb-2"></textarea>
 
-                <label>Stock</label>
-                <input type="number" id="edit-stock" class="form-control mb-2">
-
                 <label>Imagen (opcional)</label>
                 <input type="file" id="edit-imagen" class="form-control mb-2">
             </form>
@@ -78,6 +75,36 @@
         </div>
     </div>
     </div>
+
+    <!-- MODAL RESTOCK -->
+    <div class="modal fade" id="modalRestock" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Restockear Producto</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="restock-id">
+
+                <label>Cantidad a agregar</label>
+                <input type="number" id="restock-cantidad" class="form-control mb-2">
+
+                <label>Costo por pieza</label>
+                <input type="number" id="restock-costo" step="0.01" class="form-control mb-2">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" onclick="hacerRestock()">Confirmar</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="./js/stock.js"></script>

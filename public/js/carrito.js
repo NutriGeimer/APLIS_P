@@ -86,6 +86,23 @@ async function deleteItem(id) {
     updateCartCount();
 }
 
+document.getElementById("pay-btn").onclick = async () => {
+    const res = await fetch(API + "/crear_venta.php", {
+        method: "POST"
+    });
+
+    const data = await res.json();
+
+    if (!data.ok) {
+        alert(data.message);
+        return;
+    }
+
+    alert("Compra realizada con éxito 🛒💚");
+    loadCart();
+};
+
+
 loadCart();
 updateCartCount();
 

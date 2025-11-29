@@ -41,11 +41,20 @@ CREATE TABLE sessions (
 -- TABLA: ventas
 CREATE TABLE ventas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT NOT NULL,
-    cantidad INT NOT NULL,
+    user_id INT NOT NULL,
     total DECIMAL(10,2) NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
 
+-- TABLA: venta items
+CREATE TABLE ventas_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    venta_id INT NOT NULL,
+    product_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (venta_id) REFERENCES ventas(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
@@ -59,4 +68,21 @@ CREATE TABLE cart (
 
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+-- TABLA: restock
+CREATE TABLE restocks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    costo_unitario DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+-- TABLA: ingresos
+CREATE TABLE ingresos (
+    id INT PRIMARY KEY,
+    total DECIMAL(10,2) NOT NULL
 );
